@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {Hero} from './hero';
+import { HeroService } from './hero.service';
+
 
 @Component({
   selector: 'my-app',
@@ -11,15 +13,11 @@ export class AppComponent {
   hero : Hero;
   heroes : Hero[];
   selectedHero : Hero;
+  heroService = new HeroService();
 
   constructor() {
     this.title = 'Tour of Heroes';
-    this.heroes = [
-      new Hero(1, 'Windstorm'),
-      new Hero(13, 'Bombasto'),
-      new Hero(15, 'Magneta'),
-      new Hero(20, 'Tornado')
-    ];
+    this.heroes = this.heroService.getHeroes();
     this.hero = this.heroes[0];
   }
 
